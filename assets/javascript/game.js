@@ -43,7 +43,7 @@ function newGame(){
 	 {
 		//randomly generated attributes, health is favored
 		randomAttack = Math.floor(Math.random()*10+5);
-		randomDMG = Math.floor(Math.random()*10+2);
+		randomDMG = Math.floor(Math.random()*10+3);
 		randomHealth = 50-randomAttack-randomDMG;
 		//using a total # of points hopefully prevents overpowered characters
 		var temp = new character(names[i],randomAttack,randomDMG,randomHealth,portraits[names[i]]);
@@ -61,9 +61,9 @@ function draw(){
       $(".enemy"+i).attr("id",temp.name);
       //$(".enemy"+i).find("h1").text(temp.name);
       $(".enemy"+i).find("img").attr("src", temp.portrait);
-      $(".enemy"+i).find(".attack").text(temp.attack);
-      $(".enemy"+i).find(".counter").text(temp.counterDMG);
-      $(".enemy"+i).find(".health").text(temp.health);
+      $(".enemy"+i).find(".attack").text("ATK: "+temp.attack);
+      $(".enemy"+i).find(".counter").text("CTR: "+temp.counterDMG);
+      $(".enemy"+i).find(".health").text("HLTH: "+temp.health);
     }
 
 
@@ -73,18 +73,18 @@ function draw(){
       $(".neutral"+i).attr("id",temp.name);
       //$(".neutral"+i).find("h1").text(temp.name);
       $(".neutral"+i).find("img").attr("src", temp.portrait);
-      $(".neutral"+i).find(".attack").text(temp.attack);
-      $(".neutral"+i).find(".counter").text(temp.counterDMG);
-      $(".neutral"+i).find(".health").text(temp.health);
+      $(".neutral"+i).find(".attack").text("ATK: "+temp.attack);
+      $(".neutral"+i).find(".counter").text("CTR: "+temp.counterDMG);
+      $(".neutral"+i).find(".health").text("HLTH: "+temp.health);
     }
 
       if(playerChose){
       $(".player").attr("id",player.name);
       //$(".player").find("h1").text(player.name);
       $(".player").find("img").attr("src", player.portrait);
-      $(".player").find(".attack").text(player.attack);
-      $(".player").find(".counter").text(player.counterDMG);
-      $(".player").find(".health").text(player.health);
+      $(".player").find(".attack").text("ATK: "+player.attack);
+      $(".player").find(".counter").text("CTR: "+player.counterDMG);
+      $(".player").find(".health").text("HLTH: "+player.health);
       }
    }
 

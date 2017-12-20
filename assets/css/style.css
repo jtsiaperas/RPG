@@ -5,7 +5,8 @@ img {
 
 li {
 	display: inline;
-	font-size: 36px;
+	font-size: 3vh;
+	color: white;
 }
 
 
@@ -17,3 +18,7 @@ li {
 	display: none;
 }
 
+.enemy,.neutral,.player{
+	background-color: black;
+	
+}
