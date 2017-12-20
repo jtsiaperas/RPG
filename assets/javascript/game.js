@@ -43,7 +43,7 @@ function newGame(){
 	 {
 		//randomly generated attributes, health is favored
 		randomAttack = Math.floor(Math.random()*10+5);
-		randomDMG = Math.floor(Math.random()*10+5);
+		randomDMG = Math.floor(Math.random()*10+2);
 		randomHealth = 50-randomAttack-randomDMG;
 		//using a total # of points hopefully prevents overpowered characters
 		var temp = new character(names[i],randomAttack,randomDMG,randomHealth,portraits[names[i]]);
@@ -59,7 +59,7 @@ function draw(){
     {
       var temp = enemies[i];
       $(".enemy"+i).attr("id",temp.name);
-      $(".enemy"+i).find("h1").text(temp.name);
+      //$(".enemy"+i).find("h1").text(temp.name);
       $(".enemy"+i).find("img").attr("src", temp.portrait);
       $(".enemy"+i).find(".attack").text(temp.attack);
       $(".enemy"+i).find(".counter").text(temp.counterDMG);
@@ -71,7 +71,7 @@ function draw(){
     {
       var temp = neutral[i];
       $(".neutral"+i).attr("id",temp.name);
-      $(".neutral"+i).find("h1").text(temp.name);
+      //$(".neutral"+i).find("h1").text(temp.name);
       $(".neutral"+i).find("img").attr("src", temp.portrait);
       $(".neutral"+i).find(".attack").text(temp.attack);
       $(".neutral"+i).find(".counter").text(temp.counterDMG);
@@ -80,7 +80,7 @@ function draw(){
 
       if(playerChose){
       $(".player").attr("id",player.name);
-      $(".player").find("h1").text(player.name);
+      //$(".player").find("h1").text(player.name);
       $(".player").find("img").attr("src", player.portrait);
       $(".player").find(".attack").text(player.attack);
       $(".player").find(".counter").text(player.counterDMG);
@@ -114,11 +114,14 @@ $(document).ready(function(){
         	playerChose = true;
         	for (i = 0; i<characters.length; i++)
         	{
+
         		if (i != selected)
         		{
         			enemies.push(characters[i]);
-        		}
+            }
           }
+            
+            $("#text").text("");
             $("#neutral").css("display","none");
         }
         draw();
