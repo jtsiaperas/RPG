@@ -18,13 +18,12 @@ var baseAttack;
 var selected;
 
 function getIndex(name,array){
-	console.log(name);
-  console.log(array);
+	
   for (i=0; i<array.length; i++)
 		{
 			
 			var temp = array[i];
-			console.log(temp);
+			
       if (name == temp.name)
 				{
 					return i;
@@ -81,8 +80,8 @@ function draw(){
 
       if(playerChose){
       $(".player").attr("id",player.name);
-      $(".player").find(".h1").text(player.name);
-      $(".player").find(".img").attr("src", player.portrait);
+      $(".player").find("h1").text(player.name);
+      $(".player").find("img").attr("src", player.portrait);
       $(".player").find(".attack").text(player.attack);
       $(".player").find(".counter").text(player.counterDMG);
       $(".player").find(".health").text(player.health);
@@ -93,26 +92,24 @@ function draw(){
 $(document).ready(function(){
     newGame();
    
-    $(".character").on("click", function(){
+    $(".enemy,.neutral").on("click", function(){
         if (playerChose)
         {
-           if (this.id!=player.name){
                selected = getIndex(this.id,enemies);
                var temp = enemies[selected];
                temp.health -= player.attack;
-               // if (temp.health <= 0)
-               // {
-
-               // }
+               player.health -= temp.counterDMG;
+               if (temp.health <= 0)
+               {
+                  $("#"+temp.name).css("display", "none");
+               }
                enemies[selected] = temp;
                player.attack += baseAttack;
-           }
-         }
-        else
-        {
+        }
+        else{
         	selected = getIndex(this.id,characters);
           player = characters[selected];
-         	baseAttack = player.attack;
+          baseAttack = player.attack;
         	playerChose = true;
         	for (i = 0; i<characters.length; i++)
         	{
@@ -121,8 +118,8 @@ $(document).ready(function(){
         			enemies.push(characters[i]);
         		}
           }
-            neutral = [];
+            $("#neutral").css("display","none");
         }
-        
+        draw();
     });
 });

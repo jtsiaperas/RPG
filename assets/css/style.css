@@ -8,6 +8,12 @@ li {
 	font-size: 36px;
 }
 
-#neutral {
-	min-height: 33vh;
+
+.enemy .attack{
+	display: none;
+}
+
+.player .counter{
+
+	display: none;
 }
