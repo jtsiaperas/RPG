@@ -42,9 +42,9 @@ function newGame(){
 	  for (i = 0; i < 4; i++)
 	 {
 		//randomly generated attributes, health is favored
-		randomAttack = Math.floor(Math.random()*10+1);
-		randomDMG = Math.floor(Math.random()*10+1);
-		randomHealth = 40-randomAttack-randomDMG;
+		randomAttack = Math.floor(Math.random()*10+5);
+		randomDMG = Math.floor(Math.random()*10+5);
+		randomHealth = 50-randomAttack-randomDMG;
 		//using a total # of points hopefully prevents overpowered characters
 		var temp = new character(names[i],randomAttack,randomDMG,randomHealth,portraits[names[i]]);
 		characters.push(temp);
@@ -109,6 +109,7 @@ $(document).ready(function(){
         else{
         	selected = getIndex(this.id,characters);
           player = characters[selected];
+          player.health += player.counterDMG;
           baseAttack = player.attack;
         	playerChose = true;
         	for (i = 0; i<characters.length; i++)
