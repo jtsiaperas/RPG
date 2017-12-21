@@ -16,6 +16,7 @@ var characters = [];
 var playerChose;
 var baseAttack;
 var selected;
+var defeated;
 
 function getIndex(name,array){
 	
@@ -32,6 +33,7 @@ function getIndex(name,array){
 }
 
 function newGame(){
+  defeated = 0;
 	var randomAttack;
 	var randomDMG;
 	var randomHealth;
@@ -102,6 +104,23 @@ $(document).ready(function(){
                if (temp.health <= 0)
                {
                   $("#"+temp.name).css("display", "none");
+                  defeated++;
+               }
+               if (player.health <=0)
+               {
+                 var playAgain = prompt("You have been defeated! Play again?");
+                 if (playAgain)
+                 {
+                   newGame();
+                 }
+               }
+               else if(defeated == 3)
+               {
+                var playAgain = prompt("You are victorious! Play again?");
+                 if (playAgain)
+                 {
+                   newGame();
+                 }
                }
                enemies[selected] = temp;
                player.attack += baseAttack;
